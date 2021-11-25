@@ -18,10 +18,35 @@ public class DataTypeOptionPane {
     public static void main(String[] args) {
 
         DataType[] dataTypes=DataType.values();
-        //ON NUMBER 6, NEED TO CREATE AN OPTION DIALOG USING THE DATATYPES ARRAY AS THE 
-        //PARAMETER ARRAY, LOOK AT THE LINK ON THE DIRECTIONS FOR HOW TO MAKE A OPTION DIALOG
-        //BASIALLY NEED TO DISPLAY THE DIFFERENT THINGS INSIDE THE DATATYPE ARRAY ON EACH BUTTON
-        //AND EACH ONE CORRESPONDS TO THE ENUM'S NUMBER OR SOMETHING LIKE THAT
+        int answer= JOptionPane.showOptionDialog(null, "Pick one option to learn about it", "Title", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, dataTypes, null);
+        
+        switch(dataTypes[answer]) {
+        
+        case BYTE:
+        	JOptionPane.showMessageDialog(null, "A "+dataTypes[answer]+  " has "+dataTypes[answer].getBits()+ " bits");
+        	break;
+        case SHORT:
+        	JOptionPane.showMessageDialog(null, "A "+ dataTypes[answer]+ " has "+dataTypes[answer].getBits()+ " bits");
+        	break;
+        case INT:
+        	JOptionPane.showMessageDialog(null, "A "+ dataTypes[answer]+ " has "+dataTypes[answer].getBits()+ " bits");
+        	break;
+        case LONG:
+        	JOptionPane.showMessageDialog(null, "A "+ dataTypes[answer]+ " has "+dataTypes[answer].getBits()+ " bits");
+        	break;
+        case FLOAT:
+        	JOptionPane.showMessageDialog(null, "A "+ dataTypes[answer]+ " has "+dataTypes[answer].getBits()+ " bits");
+        	break;
+        case DOUBLE:
+        	JOptionPane.showMessageDialog(null, "A "+ dataTypes[answer]+ " has "+dataTypes[answer].getBits()+ " bits");
+        	break;
+        case BOOLEAN:
+        	JOptionPane.showMessageDialog(null, "A "+ dataTypes[answer]+ " has "+dataTypes[answer].getBits()+ " bits");
+        	break;
+        case CHAR:
+        	JOptionPane.showMessageDialog(null, "A "+ dataTypes[answer]+ " has "+dataTypes[answer].getBits()+ " bits");
+        	break;
+        }
     }
     
 }

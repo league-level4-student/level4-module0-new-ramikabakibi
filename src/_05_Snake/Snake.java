@@ -39,6 +39,12 @@ public class Snake {
 
         int nextX;
         int nextY;
+        switch(currentDirection) {
+        
+        case UP:
+        	//COMPLETE THIS SWITCH STATEMENT
+        
+        }
 
         
         /*
@@ -76,7 +82,9 @@ public class Snake {
          * opposite.
          */
         
-        
+        if(isOppositeDirection(direction)==false && canMove==true ) {
+        	this.currentDirection=direction;
+        }
 
     }
 
@@ -87,10 +95,25 @@ public class Snake {
          * the opposite value of the currentDirection member variable.
          * 
          * Otherwise, return false. For example, if currentDirection is UP and
-         * the passed in direction is DOWN this method should return false.
+         * the passed in direction is DOWN this method should return true.
          */
+    	
+    	
+    	boolean isOpposite = false;
 
-        boolean isOpposite = true;
+       
+        if(direction==Direction.UP&& currentDirection==Direction.DOWN) {
+    		isOpposite=true;
+    	}
+        if(direction==Direction.DOWN&& currentDirection==Direction.UP) {
+        	isOpposite=true;
+        }
+        if(direction==Direction.LEFT&& currentDirection==Direction.RIGHT) {
+        	isOpposite=true;
+        }
+        if(direction==Direction.RIGHT&& currentDirection==Direction.LEFT) {
+        	isOpposite=true;
+        }
 
         return isOpposite;
     }
