@@ -42,10 +42,26 @@ public class Snake {
         switch(currentDirection) {
         
         case UP:
-        	//COMPLETE THIS SWITCH STATEMENT
+        	nextY=head.getLocation().getY()-1;
+        	head.getLocation().setY(nextY);
+        	
         
+        case DOWN:
+        	nextY=head.getLocation().getY()+1;
+        	head.getLocation().setY(nextY);
+        	
+        case LEFT:
+        	nextX=head.getLocation().getX()-1;
+        	head.getLocation().setX(nextX);
+        	
+        case RIGHT:
+        	nextX=head.getLocation().getX()+1;
+        	head.getLocation().setX(nextX);
         }
-
+        
+        for(int i=snake.size()-1; i>=1; i--) {
+        	snake.get(i).setLocation(snake.get(i-1).getLocation());
+        }
         
         /*
          * Change the Location of each SnakeSegment in your snake ArrayList to
@@ -66,7 +82,7 @@ public class Snake {
         
 
         // Set the canMove member variable to true.
-
+        canMove=true;
 
 
     }
@@ -121,25 +137,25 @@ public class Snake {
     public void resetLocation() {
 
         // Clear the snake.
-
+    	snake.clear();
         
         
         /*
          * Create a new Location object for the head at SnakeGame.WIDTH / 2,
          * SnakeGame.HEIGHT / 2.
          */
-
+    	Location newHeadLocation= new Location(SnakeGame.WIDTH/2, SnakeGame.HEIGHT/2);
 
         /*
          * Set the head member variable equal to a new SnakeSegment object. Use
          * the Location created in step 2 for the Location and the BODY_SIZE
          * constant for the size.
          */
-
+    	head= new SnakeSegment(newHeadLocation, BODY_SIZE);
 
 
         // Add the head to the snake.
-
+    	snake.add(head);
 
 
     }
@@ -150,9 +166,14 @@ public class Snake {
          * Complete the method so it returns true if the head of the snake is
          * outside of the window and false otherwise.
          */
-
+    	if(head.getLocation().getX()>=SnakeGame.WIDTH || head.getLocation().getX()<=0 || head.getLocation().getY()<=0 || head.getLocation().getY()>=SnakeGame.HEIGHT) {
+    		return true;
+    	}
+    		
+    	else {
 
         return false;
+    	}
         
     }
 
@@ -163,7 +184,12 @@ public class Snake {
          * same location as any other body segment.
          */
 
-        
+        for(int i=snake.size()-1; i>=1; i--) {
+        	if(head.getLocation()==snake.get(i).getLocation()) {
+        		return true;
+        	}
+        }
+  
         return false;
     }
 
@@ -173,6 +199,11 @@ public class Snake {
          * Complete the method so it returns true if the passed in location is
          * located on the snake.
          */
+    	for(int i=0; i<snake.size()-1; i++) {
+    		if(loc==snake.get(i).getLocation()) {
+    			return true;
+    		}
+    	}
 
         return false;
     }
